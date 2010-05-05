@@ -1,7 +1,7 @@
 oauth2-ruby
 ===========
 
-oauth2-ruby is an implementation of the current [OAuth2 draft](http://tools.ietf.org/html/draft-hammer-oauth2-00) in [Ruby](http://ruby-lang.com). The project at the moment consists of three seperate packages: oauth2-core, oauth2-server and oauth2-client - the latter will be available soon.
+oauth2-ruby is an implementation of the current [OAuth2 draft](http://tools.ietf.org/html/draft-hammer-oauth2-00) in [Ruby](http://ruby-lang.com) released under the [MIT license](https://github.com/aflatter/oauth2-ruby/blob/master/MIT-LICENSE). The project at the moment consists of three seperate packages: oauth2-core, oauth2-server and oauth2-client - the latter will be available soon.
 
 ## oauth2-core
 
