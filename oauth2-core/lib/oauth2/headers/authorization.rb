@@ -1,4 +1,5 @@
 require 'oauth2/attributes'
+require 'active_support/ordered_hash'
 
 module OAuth2
 
@@ -44,10 +45,19 @@ module OAuth2
       end
       
       def attributes
-        Attributes.inject(Hash.new) do |hash, attribute|
+        hash = ActiveSupport::OrderedHash.new
+        Attributes.each do |attribute|
           hash[attribute] = instance_variable_get("@#{attribute}")
-          hash
         end
+        hash
+      end
+      
+      def to_s
+        attrs = attributes.collect do |key, value|
+          %{#{key}="#{value}"} if value
+        end.compact
+
+        "Token " + attrs.join(",\n     ")
       end
 
       class << self
@@ -55,18 +65,21 @@ module OAuth2
         # This method does what it is named after. Give it a String and it
         # returns a Hash. The header specification can be found on:
         # http://tools.ietf.org/html/draft-hammer-oauth2-00#section-5.1
-        # TODO: Use OrderedHash and verify that token is the first parameter
-        def parse(string, attributes = {})
-          header = new(attributes)
+        # TODO: Verify that token is the first attribute.
+        def parse(string)
+          header = new
 
           string.strip!
 
           type, tuples = string[0..4], string[5..-1].split("\n")
 
-          header.errors << :format_invalid unless type == "Token"
+          unless type == "Token"
+            header.errors << :format_invalid
+            return header
+          end
           
           tuples.map! { |tuple| tuple.strip! }
-
+          
           tuples.each do |tuple|
             unless tuple =~ /\s*(.+)="(.+)"/
               header.errors << :format_invalid 

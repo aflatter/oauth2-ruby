@@ -25,5 +25,13 @@ describe OAuth2::Headers::Authorization do
     header = OAuth2::Headers::Authorization.parse(example)
     header.token.should     == "vF9dft4qmT"
   end
+  
+  it "returns attributes in order" do
+    attributes = OAuth2::Headers::Authorization::Attributes
+    subject.attributes.should be_a(ActiveSupport::OrderedHash)
+    subject.attributes.keys.should == attributes
+  end
+  
+  it "builds a header string"
 
 end
