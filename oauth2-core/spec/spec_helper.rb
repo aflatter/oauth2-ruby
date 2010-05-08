@@ -1,7 +1,11 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
-require 'oauth2/server'
+require "rubygems"
+require "bundler"
+Bundler.setup
+
+require 'oauth2/core'
 require 'rspec'
 require 'rspec/autorun'
 
