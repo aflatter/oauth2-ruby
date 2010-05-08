@@ -11,6 +11,11 @@ describe OAuth2::Attributes do
     
     klass.new
   end
+  
+  it "should allow to set an attribute to nil" do
+    subject.foo = nil
+    subject.foo.should be_nil
+  end
 
   it "should call user defined block if it is registered" do
     foo = stub("some value")

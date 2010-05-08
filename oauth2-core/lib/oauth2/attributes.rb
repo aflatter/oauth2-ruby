@@ -31,7 +31,8 @@ module OAuth2
               return
             end
 
-            if value = @attributes[:#{handle}]
+            if @attributes.key?(:#{handle})
+              value = @attributes[:#{handle}]
               value.is_a?(Proc) ? value.call : value
             else
               raise "No attribute or callback for '#{handle}' defined"
