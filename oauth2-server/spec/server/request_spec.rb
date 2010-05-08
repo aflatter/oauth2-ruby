@@ -17,6 +17,8 @@ describe OAuth2::Server::Request do
       subject.validate(attributes).should == request
     end
     
+    it "#initialize takes a block and yields itself"
+    
   end
   
   subject { OAuth2::Server::Request.new }

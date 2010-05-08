@@ -27,6 +27,7 @@ module OAuth2
       
       def initialize(attributes = {}, &block)
         self.attributes.merge!(attributes)
+        yield self
       end
       
       def errors
