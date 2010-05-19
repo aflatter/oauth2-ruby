@@ -1,4 +1,10 @@
-$: << File.join(File.dirname(__FILE__), '..', '..', 'oauth2-core', 'lib')
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', '..', 'oauth2-core', 'lib'))
+
+require "rubygems"
+require "bundler"
+Bundler.setup
 
 require 'oauth2/server'
 require 'rspec'
