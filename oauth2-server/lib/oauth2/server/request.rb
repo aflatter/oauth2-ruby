@@ -37,10 +37,10 @@ module OAuth2
       alias_method :original_request_header, :request_header
 
       # Overwrite attribute reader #request_header
-      # See OAuth2::Server::Attributes
-      def request_header
-        value = original_request_header
-      
+      # See OAuth2::Core::Attributes
+      def request_header(&block)
+        value = original_request_header(&block)
+
         if value.is_a?(String)
           value = Headers::Authorization.parse(value)
         end

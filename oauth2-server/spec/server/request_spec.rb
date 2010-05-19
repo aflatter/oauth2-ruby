@@ -17,7 +17,16 @@ describe OAuth2::Server::Request do
       subject.validate(attributes).should == request
     end
     
-    it "#initialize takes a block and yields itself"
+    it "#initialize takes a block and yields itself" do
+      called = false
+
+      subject.new(:realm => "foo") do |req|
+        called = true
+        req.realm.should == "foo"
+      end
+
+      called.should be_true
+    end
     
   end
   
@@ -36,6 +45,13 @@ describe OAuth2::Server::Request do
   
     OAuth2::Headers::Authorization.should_receive(:parse).with('foo').and_return("bar")
     subject.request_header.should == "bar"
+  end
+  
+  it "overwritten #request_header behaves like the original method" do
+    block = lambda { :foo }
+    subject.request_header(&block).should == nil
+    subject.attributes[:request_header].should == block
+    subject.request_header.should == :foo
   end
 
   # @fixme: This example cries.
