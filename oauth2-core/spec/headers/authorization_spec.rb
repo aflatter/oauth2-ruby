@@ -32,8 +32,21 @@ describe OAuth2::Headers::Authorization do
     subject.attributes.keys.should == attributes
   end
 
-  it "ignores parameters without value" do
-    OAuth2::Headers::Authorization.new(:token => "vF9dft4qmT", :signature => "").to_s.should == OAuth2::Headers::Authorization.new(:token => "vF9dft4qmT").to_s
+  it "ignores parameters without value using the parse method" do
+    example_with_empty_value = <<-EOS
+    Token token="vF9dft4qmT",
+      nonce=""
+    EOS
+    
+    example_without_empty_value = <<-EOS
+    Token token="vF9dft4qmT"
+    EOS
+
+    OAuth2::Headers::Authorization.parse(example_with_empty_value).to_s.should == OAuth2::Headers::Authorization.parse(example_without_empty_value).to_s
+  end
+  
+  it "ignores parameters without value using the new method" do
+OAuth2::Headers::Authorization.new(:token => "vF9dft4qmT", :signature => "").to_s.should == OAuth2::Headers::Authorization.new(:token => "vF9dft4qmT").to_s
   end
 
   it "builds a header string"

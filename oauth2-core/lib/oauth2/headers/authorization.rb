@@ -9,7 +9,7 @@ module OAuth2
 
       def initialize(attributes = {})
         attributes.each_pair do |key, value|
-          if Attributes.include?(key.to_sym)
+          if Attributes.include?(key.to_sym) && !value.empty?
             instance_variable_set("@#{key}", value)
           end
         end
@@ -81,10 +81,11 @@ module OAuth2
           tuples.map! { |tuple| tuple.strip! }
           
           tuples.each do |tuple|
-            unless tuple =~ /\s*(.+)="(.+)"/
+            unless tuple =~ /\s*(.+)="(.*)"/
               header.errors << :format_invalid 
             else
               key, value = $1.to_sym, $2
+              next if value.empty?
 
               unless Attributes.include?(key)
                 header.errors << "unknown_attribute_#{key}".to_sym
