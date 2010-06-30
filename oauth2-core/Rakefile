@@ -1,3 +1,12 @@
-require 'rspec/core/rake_task'
+require "rubygems"
 
-Rspec::Core::RakeTask.new(:spec)
+begin
+  require 'rspec/core/rake_task'
+rescue LoadError
+  raise 'RSpec could not be loaded. Run `bundle install` to get all development dependencies.'
+else
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.warning    = false
+  end
+  task :default => :spec
+end
