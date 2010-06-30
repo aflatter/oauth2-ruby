@@ -4,12 +4,22 @@ $LOAD_PATH.unshift(File.expand_path(
 ))
 
 require "rubygems"
-require "bundler"
-Bundler.setup
+
+begin
+  require "bundler"
+  Bundler.setup
+rescue LoadError => e
+  puts 'Bundler not found. Please install bundler with the command gem install bundler'	
+end
+
+begin
+  require 'rspec'
+  require 'rspec/autorun'
+rescue LoadError => e
+  puts 'RSpec not found. Please install rspec with command bundle install'
+end
 
 require 'oauth2/server'
-require 'rspec'
-require 'rspec/autorun'
 
 Dir.glob(File.dirname(__FILE__) + "/support/**/*.rb").each do |file|
   require file
