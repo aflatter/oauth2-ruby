@@ -32,6 +32,7 @@ How to contribute
 =================
 
 If you wish to helps us make OAuth 2 an easy ride with Ruby, please take note of the following:
+
 * If you have an issue, please submit it [here on Github](http://github.com/aflatter/oauth2-ruby/issues)
 * Should you wish to commit a patch, please fork the project and send a pull request. But - please - don't forget the tests :)
 
