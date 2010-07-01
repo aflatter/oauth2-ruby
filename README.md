@@ -1,9 +1,18 @@
-oauth2-ruby
+Introduction
 ===========
 
-oauth2-ruby is an implementation of the current [OAuth2 draft](http://tools.ietf.org/html/draft-hammer-oauth2-00) in [Ruby](http://ruby-lang.com) released under the [MIT license](http://github.com/aflatter/oauth2-ruby/blob/master/MIT-LICENSE). The project at the moment consists of three seperate packages: oauth2-core, oauth2-server and oauth2-client - the latter will be available soon.
+oauth2-ruby is a Ruby GEM that makes it easy for developers to leverage OAuth2 protocol, currently in use in sites such as Facebook, Twitter and Launchpad (37 Signals).
 
 **Disclaimer:** As this is alpha software, it is suspected to change and considered unstable.
+
+## OAuth 2 protocol compliance
+
+The current implementation of the gem is based on OAuth2 draft 00 (more about it [here](http://tools.ietf.org/html/draft-ietf-oauth-v2-00) and [here](http://tools.ietf.org/html/draft-hammer-oauth2-00)). Our goal is to support [Draft 09](http://tools.ietf.org/html/draft-ietf-oauth-v2-09) by the time gem hits version 1.0.
+
+## Packages
+
+Currently the project consists of three seperate packages: oauth2-core, oauth2-server and oauth2-client - the latter will be available soon.
+
 
 ## oauth2-core
 
@@ -19,3 +28,15 @@ Getting started
 ===============
 
 The [wiki](http://github.com/aflatter/oauth2-ruby/wikis) features some examples.
+
+How to contribute
+=================
+
+If you wish to helps us make OAuth 2 an easy ride with Ruby, please take note of the following:
+* If you have an issue, please submit it [here on Github](http://github.com/aflatter/oauth2-ruby/issues)
+* Should you wish to commit a patch, please fork the project and send a pull request. But - please - don't forget the tests :)
+
+License
+=======
+
+This Ruby GEM is made available to you under the [MIT license](http://github.com/aflatter/oauth2-ruby/blob/master/MIT-LICENSE).
