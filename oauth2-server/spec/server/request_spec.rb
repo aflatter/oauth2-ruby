@@ -73,8 +73,8 @@ describe OAuth2::Server::Request do
     subject.should_receive(:request_header).exactly(3).times.with(no_args).and_return(header)
     subject.should_receive(:secret).once.and_return("secret")
 
-    HMAC::SHA256.should_receive(:digest).once.
-                 with("secret", normalized_string).
+    OpenSSL::HMAC.should_receive(:digest).once.
+                 with(OpenSSL::Digest::Digest.new('sha256'), "secret", normalized_string).
                  and_return("digest")
   
     ActiveSupport::Base64.should_receive(:encode64s).

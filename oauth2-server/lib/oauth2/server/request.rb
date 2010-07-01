@@ -1,5 +1,5 @@
+require 'openssl'
 require 'oauth2/attributes'
-require 'hmac-sha2'
 require 'active_support/base64'
 
 module OAuth2
@@ -84,9 +84,7 @@ module OAuth2
           request_uri
         ].join(',')
 
-        digest = HMAC::SHA256.digest(secret, normalized_string)
-
-        ActiveSupport::Base64.encode64s(digest)
+        ActiveSupport::Base64.encode64s(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), secret, normalized_string))
       end
 
       def validate_signature

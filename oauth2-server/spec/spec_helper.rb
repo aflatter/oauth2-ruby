@@ -19,6 +19,12 @@ rescue LoadError => e
   puts 'RSpec not found. Please install rspec with command bundle install'
 end
 
+begin
+  require 'openssl'
+rescue LoadError => e
+  puts 'OpenSSL not present. Please check your Ruby installation and make sure it includes the OpenSSL libraries'
+end
+
 require 'oauth2/server'
 
 Dir.glob(File.dirname(__FILE__) + "/support/**/*.rb").each do |file|
