@@ -1,7 +1,7 @@
 Introduction
 ===========
 
-oauth2-ruby is a Ruby GEM that makes it easy for developers to leverage OAuth2 protocol, currently in use in sites such as Facebook, Twitter and Launchpad (37 Signals).
+oauth2-ruby is a Ruby library that's packaged as a gem that makes it easy for developers to leverage OAuth2 protocol, currently in use in sites such as Facebook, Twitter and Launchpad (37 Signals).
 
 **Disclaimer:** As this is alpha software, it is suspected to change and considered unstable.
 
