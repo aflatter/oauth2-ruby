@@ -5,12 +5,12 @@ describe OAuth2::Headers::Authorization do
 
   it "should parse a real world cryptographic example" do
     example = <<-EOS
-      Token token="vF9dft4qmT", 
-            nonce="s8djwd",
-            timestamp="137131200",
-            algorithm="hmac-sha256",
-            signature="wOJIO9A2W5mFwDgiDvZbTSMK/PY="
-            EOS
+    Token token="vF9dft4qmT",
+      nonce="s8djwd",
+      timestamp="137131200",
+      algorithm="hmac-sha256",
+      signature="wOJIO9A2W5mFwDgiDvZbTSMK/PY="
+    EOS
 
     header = OAuth2::Headers::Authorization.parse(example)
     header.token.should     == "vF9dft4qmT"
@@ -25,13 +25,17 @@ describe OAuth2::Headers::Authorization do
     header = OAuth2::Headers::Authorization.parse(example)
     header.token.should     == "vF9dft4qmT"
   end
-  
+
   it "returns attributes in order" do
     attributes = OAuth2::Headers::Authorization::Attributes
     subject.attributes.should be_a(ActiveSupport::OrderedHash)
     subject.attributes.keys.should == attributes
   end
-  
+
+  it "ignores parameters without value" do
+    OAuth2::Headers::Authorization.new(:token => "vF9dft4qmT", :signature => "").to_s.should == OAuth2::Headers::Authorization.new(:token => "vF9dft4qmT").to_s
+  end
+
   it "builds a header string"
 
 end
