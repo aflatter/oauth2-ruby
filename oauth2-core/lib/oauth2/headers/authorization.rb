@@ -81,6 +81,10 @@ module OAuth2
           tuples.map! { |tuple| tuple.strip! }
           
           tuples.each do |tuple|
+            
+            # Parameters sent without a value MUST be treated as if they were
+            # omitted from the request.
+            # http://tools.ietf.org/html/draft-ietf-oauth-v2-09#page-18
             unless tuple =~ /\s*(.+)="(.*)"/
               header.errors << :format_invalid 
             else
