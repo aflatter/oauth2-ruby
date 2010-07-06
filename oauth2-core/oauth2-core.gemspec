@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Alexander Flatter"]
   s.email       = ["aflatter@farbenmeer.net"]
-  s.homepage    = "http://github.com/aflatter/oauth2"
+  s.homepage    = "http://github.com/aflatter/oauth2-ruby"
   s.summary     = ""
   s.description = ""
  
