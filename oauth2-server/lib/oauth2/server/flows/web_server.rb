@@ -41,7 +41,7 @@ module OAuth2
         include OAuth2::Attributes
 
         attributes  :verify_resource_owner,
-          :render_authorize_form
+                    :render_authorize_form
 
         # This method try to identify and verify the resource owner.
         # It displays the authorization form on success.
@@ -53,8 +53,8 @@ module OAuth2
         end
 
         attributes  :create_verification_code,
-          :authorized?
-        :redirect_back
+                    :authorized?,
+                    :redirect_back
 
         # If the user authorized the client, we create a verification code.
         # Then we redirect back with the verification code or an error message.
