@@ -4,7 +4,7 @@ module OAuth2
 
     module Adapters
 
-      module ActiveRecord < Base
+      class ActiveRecord < Base
 
       end
 
