@@ -1,3 +1,4 @@
+require 'oauth2/rails/engine' if defined?(Rails)
 require 'oauth2/rails/config'
 require 'active_support/core_ext/module'
 
@@ -15,7 +16,7 @@ module OAuth2
       end
 
     end
-    
+
   end
   
 end
