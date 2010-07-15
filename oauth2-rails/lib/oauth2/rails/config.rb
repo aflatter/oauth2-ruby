@@ -16,7 +16,8 @@ module OAuth2
       option :enforce_scopes, true
 
       option :models, {
-        :client => :client
+        :client                   => :client,
+        :authorization_code_grant => :authorization_code_grant
       }
 
       def setup(&block)
