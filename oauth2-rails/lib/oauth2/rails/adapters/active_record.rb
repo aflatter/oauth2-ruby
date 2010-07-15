@@ -6,6 +6,12 @@ module OAuth2
 
       class ActiveRecord < Base
 
+        def create_authorization_code_grant(attributes)
+          AuthorizationCodeGrant.create(
+            attributes.slice(:client, :user, :request_uri, :code)
+          )
+        end
+
       end
 
     end
