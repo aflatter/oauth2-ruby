@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.expand_path(
-  File.join('..', '..', 'oauth2-core', 'lib'),
-  File.dirname(__FILE__)
+                     File.join('..', '..', 'oauth2-core', 'lib'),
+                     File.dirname(__FILE__)
 ))
 
 require "rubygems"
@@ -9,7 +9,7 @@ begin
   require "bundler"
   Bundler.setup
 rescue LoadError => e
-  puts 'Bundler not found. Please install bundler with the command gem install bundler'	
+  puts 'Bundler not found. Please install bundler with the command gem install bundler'
 end
 
 begin
@@ -19,12 +19,6 @@ rescue LoadError => e
   puts 'RSpec not found. Please install rspec with command bundle install'
 end
 
-begin
-  require 'openssl'
-rescue LoadError => e
-  puts 'OpenSSL not present. Please check your Ruby installation and make sure it includes the OpenSSL libraries'
-end
-
 require 'oauth2/server'
 
 Dir.glob(File.dirname(__FILE__) + "/support/**/*.rb").each do |file|
@@ -32,6 +26,8 @@ Dir.glob(File.dirname(__FILE__) + "/support/**/*.rb").each do |file|
 end
 
 Rspec.configure do |config|
+  config.debug = true
+
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -40,6 +36,4 @@ Rspec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   # config.mock_with :rspec
-  
-  config.include OAuth2::Matchers
 end
