@@ -21,10 +21,6 @@ end
 
 require 'oauth2/server'
 
-Dir.glob(File.dirname(__FILE__) + "/support/**/*.rb").each do |file|
-  require file
-end
-
 Rspec.configure do |config|
   config.debug = true
 
