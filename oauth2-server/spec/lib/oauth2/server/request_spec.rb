@@ -35,6 +35,7 @@ describe OAuth2::Server::Request do
         @request = OAuth2::Server::Request.new({ :http_content_type => 'application/x-www-form-urlencoded',
                                                  :params => {} })
       end
+
       it "accepts get and post" do
         [:get, :post].each do |v|
           @request.http_method = v
@@ -49,6 +50,25 @@ describe OAuth2::Server::Request do
         end
       end
     end # http_method
+
+    describe "http_content_type" do
+      before :each do
+        @request = OAuth2::Server::Request.new({ :http_content_type => 'application/x-www-form-urlencoded',
+                                                 :http_method => :get,
+                                                 :params => {} })
+      end
+
+      it "accepts application/x-www-form-urlencoded content type" do
+        @request.should be_valid
+      end
+
+      it "rejects all other values" do
+        ['application/json', 'text/html'].each do |v|
+          @request.http_content_type = v
+          @request.should_not be_valid
+        end
+      end
+    end
   end # Validations
 
 end # Request
