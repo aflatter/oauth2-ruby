@@ -43,11 +43,10 @@ describe OAuth2::Server::Request do
       end
 
       it "rejects all other values" do
-        @request.http_method = :dummy
-        @request.should_not be_valid
-
-        @request.http_method = "dummy"
-        @request.should_not be_valid
+        [:dummy, 'dummy', 123, String, [], {}].each do |v|
+          @request.http_method = v
+          @request.should_not be_valid
+        end
       end
     end # http_method
   end # Validations
