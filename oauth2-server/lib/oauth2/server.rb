@@ -1,4 +1,6 @@
 require 'oauth2/core'
+require 'active_model'
+require 'active_support'
 
 module OAuth2
 

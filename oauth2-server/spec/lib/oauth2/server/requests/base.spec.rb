@@ -1,5 +1,6 @@
 require 'spec_helper.rb'
 
+# rename the file from base.spec.rb to base_spec.rb in order to re-activate these testes
 describe OAuth2::Server::Requests::Base do
   describe "constructor" do
     it "has a constructor that doesn't require any params" do
