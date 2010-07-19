@@ -1,4 +1,4 @@
-require 'active_record'
+require Gem.required_location('activerecord', 'active_record', Gem::Requirement.new('>= 3.0.0.beta'))
 
 module OAuth2
   module Models
