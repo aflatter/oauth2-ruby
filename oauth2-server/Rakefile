@@ -6,7 +6,7 @@ rescue LoadError
   raise 'RSpec could not be loaded. Run `bundle install` to get all development dependencies.'
 else
   RSpec::Core::RakeTask.new(:spec) do |t|
-    t.warning    = false
+    t.warning = false
   end
   task :default => :spec
 end
