@@ -1,7 +1,5 @@
-$LOAD_PATH.unshift(File.expand_path(
-                     File.join('..', '..', 'oauth2-core', 'lib'),
-                     File.dirname(__FILE__)
-))
+$LOAD_PATH.unshift(File.expand_path(File.join('..', '..', 'oauth2-core', 'lib'),
+                                    File.dirname(__FILE__)))
 
 require "rubygems"
 
