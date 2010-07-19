@@ -28,9 +28,28 @@ describe OAuth2::Server::Request do
       end
     end
   end # Constructor
-  
+
   describe "validations" do
-    
-  end
-  
+    describe "http_method" do
+      before :each do
+        @request = OAuth2::Server::Request.new({ :http_content_type => 'application/x-www-form-urlencoded',
+                                                 :params => {} })
+      end
+      it "accepts get and post" do
+        [:get, :post].each do |v|
+          @request.http_method = v
+          @request.should be_valid
+        end
+      end
+
+      it "rejects all other values" do
+        @request.http_method = :dummy
+        @request.should_not be_valid
+
+        @request.http_method = "dummy"
+        @request.should_not be_valid
+      end
+    end # http_method
+  end # Validations
+
 end # Request

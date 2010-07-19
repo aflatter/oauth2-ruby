@@ -12,6 +12,8 @@ module OAuth2
       attr_accessor :http_method, :http_content_type, :params
 
       # Validations
+      validates :http_method, :http_method => { :method => [:get, :post] }
+      validates :http_content_type, :http_content_type => true
 
       # Constructor
       def initialize(values = {})
