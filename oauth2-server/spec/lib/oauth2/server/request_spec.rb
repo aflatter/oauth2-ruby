@@ -1,6 +1,7 @@
 require 'spec_helper.rb'
 
 describe OAuth2::Server::Request do
+
   describe "constructor" do
     it "starts with nil properties" do
       [:http_method, :http_content_type, :params].each do |v|
@@ -65,6 +66,25 @@ describe OAuth2::Server::Request do
       it "rejects all other values" do
         ['application/json', 'text/html'].each do |v|
           @request.http_content_type = v
+          @request.should_not be_valid
+        end
+      end
+    end # http_content_type
+
+    describe "params" do
+      before :each do
+        @request = OAuth2::Server::Request.new({ :http_content_type => 'application/x-www-form-urlencoded',
+                                                 :http_method => :get,
+                                                 :params => {} })
+      end
+
+      it "accepts a params hash" do
+        @request.should be_valid
+      end
+
+      it "rejects all other object types" do
+        [[], "params", :params, 123, Hash].each do |v|
+          @request.params = v
           @request.should_not be_valid
         end
       end

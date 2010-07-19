@@ -14,6 +14,7 @@ module OAuth2
       # Validations
       validates :http_method, :http_method => { :method => [:get, :post] }
       validates :http_content_type, :http_content_type => true
+      validates :params, :params => true
 
       # Constructor
       def initialize(values = {})
