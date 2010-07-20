@@ -1,10 +1,12 @@
 require 'oauth2/core'
 require 'active_model'
 require 'active_support'
-require 'oauth2/models'
 require 'oauth2/validators'
 
 module OAuth2
+
+  autoload :Models,     'oauth2/models'
+  autoload :Factories,  'oauth2/factories'
 
   module Server
     DEFAULT_CONFIG = { :orm => :ActiveRecord,
@@ -12,7 +14,8 @@ module OAuth2
                                       :database => 'oauth2-server-test',
                                       :username => 'oauth2_tester',
                                       :password => 'tester123',
-                                      :host     => 'localhost' } }
+                                      :host     => 'localhost' },
+                       :models => { :client_application => 'oauth2_client_applications' } }
 
     def self.configurations
       DEFAULT_CONFIG
