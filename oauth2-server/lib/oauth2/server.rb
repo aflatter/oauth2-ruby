@@ -7,8 +7,19 @@ require 'oauth2/validators'
 module OAuth2
 
   module Server
-    autoload :Request,  'oauth2/server/request'
-    autoload :Requests, 'oauth2/server/requests'
+    DEFAULT_CONFIG = { :orm => :ActiveRecord,
+                       :database => { :adapter  => 'mysql',
+                                      :database => 'oauth2-server-test',
+                                      :username => 'oauth2_tester',
+                                      :password => 'tester123',
+                                      :host     => 'localhost' } }
+
+    def self.configurations
+      DEFAULT_CONFIG
+    end
+
+    autoload :Request,        'oauth2/server/request'
+    autoload :Requests,       'oauth2/server/requests'
   end
 
 end
