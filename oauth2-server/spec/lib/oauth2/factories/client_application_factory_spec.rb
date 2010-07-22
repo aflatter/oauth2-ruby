@@ -15,6 +15,8 @@ context OAuth2::Factories::ClientApplicationFactory do
       end
 
       it "returns a valid instance of ClientApplication when an existing external id is passed" do
+        ca = Factory.create(:client_application)
+        debugger
         client_application = subject.find_by_external_id('gnomeslab')
 
         client_application.should be_a_kind_of(OAuth2::Models::ActiveRecord::ClientApplication)
