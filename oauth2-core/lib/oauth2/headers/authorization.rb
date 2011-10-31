@@ -23,7 +23,7 @@ module OAuth2
       Attributes.each do |attribute|
         attr_accessor(attribute)
       end
-      
+
       def validate
         case request_type
         when :bearer
@@ -37,13 +37,13 @@ module OAuth2
           end
         end
 
-        @errors.blank?     
+        @errors.blank?
       end
-      
+
       def errors
         @errors ||= []
       end
-      
+
       def attributes
         hash = ActiveSupport::OrderedHash.new
         Attributes.each do |attribute|
@@ -51,7 +51,7 @@ module OAuth2
         end
         hash
       end
-      
+
       def to_s
         attrs = attributes.collect do |key, value|
           %{#{key}="#{value}"} if value
@@ -77,16 +77,16 @@ module OAuth2
             header.errors << :format_invalid
             return header
           end
-          
+
           tuples.map! { |tuple| tuple.strip! }
-          
+
           tuples.each do |tuple|
-            
+
             # Parameters sent without a value MUST be treated as if they were
             # omitted from the request.
             # http://tools.ietf.org/html/draft-ietf-oauth-v2-09#page-18
             unless tuple =~ /\s*(.+)="(.*)"/
-              header.errors << :format_invalid 
+              header.errors << :format_invalid
             else
               key, value = $1.to_sym, $2
               next if value.empty?

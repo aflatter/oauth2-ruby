@@ -11,7 +11,7 @@ begin
   require "bundler"
   Bundler.setup
 rescue LoadError => e
-  puts 'Bundler not found. Please install bundler with the command gem install bundler'	
+  puts 'Bundler not found. Please install bundler with the command gem install bundler'
 end
 
 begin

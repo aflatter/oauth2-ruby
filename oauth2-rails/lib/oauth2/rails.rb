@@ -3,14 +3,14 @@ require 'oauth2/rails/config'
 require 'active_support/core_ext/module'
 
 module OAuth2
-  
+
   module Rails
-    
+
     class << self
-      
+
       mattr_accessor :config
       self.config = Config.new
-      
+
       def setup(&block)
         config.setup(&block)
       end
@@ -18,5 +18,5 @@ module OAuth2
     end
 
   end
-  
+
 end
