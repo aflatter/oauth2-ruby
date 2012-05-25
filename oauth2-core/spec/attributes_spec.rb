@@ -8,10 +8,10 @@ describe OAuth2::Attributes do
       include OAuth2::Attributes
       attributes :foo
     end
-    
+
     klass.new
   end
-  
+
   it "should allow to set an attribute to nil" do
     subject.foo = nil
     subject.foo.should be_nil
@@ -22,15 +22,15 @@ describe OAuth2::Attributes do
     subject.foo { foo }
     subject.foo.should == foo
   end
-  
+
   it "should return user defined value if defined" do
     foo = stub("some value")
     subject.foo = foo
     subject.foo.should == foo
   end
-  
+
   it "should raise exception if no callback or value is defined" do
     lambda { subject.foo }.should raise_error(RuntimeError)
   end
-  
+
 end

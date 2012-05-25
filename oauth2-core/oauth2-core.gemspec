@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
- 
+
 Gem::Specification.new do |s|
   s.name        = "oauth2-core"
   s.version     = '0.1.4'
@@ -11,13 +11,13 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/aflatter/oauth2-ruby"
   s.summary     = ""
   s.description = ""
- 
+
   s.required_rubygems_version = ">= 1.3.6"
- 
+
   s.add_dependency(%q<activesupport>, [">= 0.0.0"])
 
   s.add_development_dependency "rspec"
- 
+
   s.files        = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md)
   s.require_path = 'lib'
 end
